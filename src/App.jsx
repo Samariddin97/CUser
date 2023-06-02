@@ -30,6 +30,14 @@ const closeModal = (e) => {
   if (e.key === "Escape") setShowModal(false)
 }
 
+// add user
+const addUser = (user) => {
+  setUsers((prev) => {
+    return { ... prev, user }
+  })
+  setShowModal(false)
+}
+
   return (
     <div onClick={closeModal} onKeyDown={closeModal} className='App'>
       <Navbar usersLength={users.length}/>
@@ -39,7 +47,7 @@ const closeModal = (e) => {
           </div>
           <UserList users={users} deleteUser={deleteUser}/>
         </main>
-        {showModal && <NewUserForm/>}
+        {showModal && <NewUserForm addUser={addUser}/>}
         <button className='create-user' onClick={() => setShowModal(true)}>Create User</button>
       <Footer/>      
     </div>
@@ -48,12 +56,4 @@ const closeModal = (e) => {
 
 export default App
 
-// id: 1,
-// image: 'https://picsum.photos/400?random=1',
-// firstName: 'Samariddin',
-// lastName: 'Alimov',
-// age: 26,
-// from: 'Uzbekistan',
-// job: 'Frontend Developer',
-// gender: 'Male'
 
